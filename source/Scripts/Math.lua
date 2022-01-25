@@ -10,8 +10,11 @@ function manager_math.FractionToDecimal(numberator: number, denominator: number)
 	return numberator / denominator
 end
 
-function manager_math.ParseDouble(num: number)
-	local str = string.format('%.3f', num)
+function manager_math.ParseDouble(num: number, decimals: number)
+	decimals = typeof(decimals) == 'number' and decimals > 0 and decimals or 1
+	num = typeof(num) == 'number' and num
+
+	local str = string.format('%.' .. decimals .. 'f', num)
 
 	return tonumber(str)
 end
